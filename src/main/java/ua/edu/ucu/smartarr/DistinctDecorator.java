@@ -31,9 +31,9 @@ public class DistinctDecorator extends SmartArrayDecorator {
                         newArray[j] = null;
                     }
                     if (newArray[i] instanceof Student && newArray[j]
-                            instanceof Student &&
-                            compareStudent((Student) newArray[i],
-                                    (Student) newArray[j])) {
+                            instanceof Student
+                            && compareStudent((Student) newArray[i],
+                            (Student) newArray[j])) {
                         newArray[j] = null;
                     }
 
