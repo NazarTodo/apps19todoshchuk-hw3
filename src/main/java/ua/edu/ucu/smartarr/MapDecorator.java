@@ -26,7 +26,7 @@ public class MapDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "MapDecorator";
+        return this.smartArray.operationDescription() + " + MapDecorator";
     }
 
     @Override

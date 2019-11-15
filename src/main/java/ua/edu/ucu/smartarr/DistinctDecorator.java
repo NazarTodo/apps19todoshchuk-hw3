@@ -54,7 +54,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "DistinctDecorator";
+        return this.smartArray.operationDescription() + " + DistinctDecorator";
     }
 
     @Override

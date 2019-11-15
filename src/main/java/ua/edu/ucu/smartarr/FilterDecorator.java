@@ -31,7 +31,7 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "FilterDecorator";
+        return this.smartArray.operationDescription() + " + FilterDecorator";
     }
 
     @Override
