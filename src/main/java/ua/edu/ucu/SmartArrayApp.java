@@ -1,5 +1,6 @@
 package ua.edu.ucu;
 
+
 import java.util.Arrays;
 
 import ua.edu.ucu.functions.MyComparator;
@@ -46,15 +47,16 @@ public class SmartArrayApp {
 
     public static String[]
     findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
-
+        final int YEAR = 2;
+        final int GPA = 4;
 
         SmartArray arr = new BaseArray(students);
         arr = new DistinctDecorator(arr);
         arr = new FilterDecorator(arr, new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return ((Student) t).getYear() == 2
-                        && ((Student) t).getGPA() >= 4;
+                return ((Student) t).getYear() == YEAR
+                        && ((Student) t).getGPA() >= GPA;
             }
         });
         arr = new SortDecorator(arr, new MyComparator() {

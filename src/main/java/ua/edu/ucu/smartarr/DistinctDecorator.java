@@ -15,9 +15,11 @@ public class DistinctDecorator extends SmartArrayDecorator {
 
 
     private boolean compareStudent(Student st1, Student st2) {
-        return st1.getSurname().equals(st2.getSurname()) &&
-                st1.getName().equals(st2.getName()) && st1.getYear()
-                == (st2.getYear()) && st1.getGPA() == (st2.getGPA());
+        final double mini = Double.MIN_VALUE;
+        return st1.getSurname().equals(st2.getSurname())
+                && st1.getName().equals(st2.getName())
+                && Math.abs(st1.getYear() - st2.getYear()) < mini
+                && Math.abs(st1.getGPA() - st2.getGPA()) < mini;
     }
 
     private void removeRepetitions() {
@@ -36,7 +38,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
                         }
                     }
                 } catch (NullPointerException ignore) {
-
+                    System.out.println("Equals can not work with null values");
                 }
             }
         }

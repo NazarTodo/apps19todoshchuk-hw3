@@ -16,12 +16,9 @@ public class FilterDecorator extends SmartArrayDecorator {
     private void filter() {
         Object[] newArray = smartArray.toArray();
         for (int j = 0; j < newArray.length; j++) {
-            try {
-                if (!pr.test(newArray[j])) {
-                    newArray[j] = null;
-                }
-            } catch (NullPointerException ignore) {
 
+            if (!pr.test(newArray[j])) {
+                newArray[j] = null;
             }
 
         }
