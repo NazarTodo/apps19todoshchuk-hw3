@@ -15,6 +15,21 @@ public class Student {
         this.surname = surname;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+
+        if (!(obj instanceof Student)) {
+            return false;
+        } else {
+            Student other = (Student) obj;
+            if (other.hashCode() != obj.hashCode()) {
+                return false;
+            }
+            return other.GPA == GPA && year == other.year &&
+                    name.equals(other.name) && surname.equals(other.surname);
+        }
+    }
+
     public double getGPA() {
         return GPA;
     }

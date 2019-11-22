@@ -80,4 +80,5 @@ public class SmartArrayApp {
         return Arrays.copyOf(result, result.length, String[].class);
 
     }
+
 }

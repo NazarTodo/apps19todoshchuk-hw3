@@ -11,18 +11,25 @@ public class SortDecorator extends SmartArrayDecorator {
     public SortDecorator(SmartArray smartArray, MyComparator cmp) {
         super(smartArray);
         this.cmp = cmp;
-        sorting();
+        array = sorting();
 
     }
 
-    private void sorting() {
-        Object[] newArr = this.smartArray.toArray();
+    private Object[] sorting() {
+        Object[] newArr = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+
         Arrays.sort(newArr, cmp);
+        return newArr;
     }
 
     @Override
     public Object[] toArray() {
-        return this.smartArray.toArray();
+        if (Arrays.equals(array, smartArray.toArray())) {
+            return array;
+        } else {
+            array = sorting();
+            return array;
+        }
     }
 
     @Override
@@ -32,7 +39,7 @@ public class SortDecorator extends SmartArrayDecorator {
 
     @Override
     public int size() {
-        return this.smartArray.size();
+        return array.length;
     }
 
 

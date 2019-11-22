@@ -2,6 +2,8 @@ package ua.edu.ucu.smartarr;
 
 import ua.edu.ucu.functions.MyFunction;
 
+import java.util.Arrays;
+
 // Map every element to another object using MyFunction
 public class MapDecorator extends SmartArrayDecorator {
     private MyFunction func;
@@ -9,19 +11,26 @@ public class MapDecorator extends SmartArrayDecorator {
     public MapDecorator(SmartArray smartArray, MyFunction func) {
         super(smartArray);
         this.func = func;
-        map();
+        array = map();
     }
 
-    private void map() {
-        Object[] newArr = this.smartArray.toArray();
+    private Object[] map() {
+        Object[] newArr = Arrays.copyOf(smartArray.toArray(), smartArray.size());
+        Object[] finalArr = new Object[newArr.length];
         for (int i = 0; i < newArr.length; i++) {
-            newArr[i] = func.apply(newArr[i]);
+            finalArr[i] = func.apply(newArr[i]);
         }
+        return finalArr;
     }
 
     @Override
     public Object[] toArray() {
-        return this.smartArray.toArray();
+        if (Arrays.equals(array, smartArray.toArray())) {
+            return array;
+        } else {
+            array = map();
+            return array;
+        }
     }
 
     @Override
@@ -31,6 +40,6 @@ public class MapDecorator extends SmartArrayDecorator {
 
     @Override
     public int size() {
-        return this.smartArray.size();
+        return array.length;
     }
 }
